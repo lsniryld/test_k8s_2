@@ -23,7 +23,7 @@ spec:
         - name: HOST
           value: postgres
         - name: USER
-          value: postgres
+          value: odoo
         - name: PASSWORD
           valueFrom:
             secretKeyRef:
@@ -40,8 +40,8 @@ spec:
           mountPath: /mnt/extra-addons
       volumes:
         - name: odoo-storage
-          persistentVolumeClaim:
-            claimName: odoo-pvc
+          hostPath:
+            path: /data/odoo-storage          
         - name: odoo-persistent-storage
           hostPath:
             path: /data/odoo-config
